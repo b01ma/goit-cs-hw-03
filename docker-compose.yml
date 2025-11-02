@@ -1,12 +1,26 @@
 version: '3.8'
 
 services: 
+
+  # PostgreSQL
   postgres:
     image: postgres:15-alpine
-    container_name: task_managemnt_db
+    container_name: task_management_db
     environment:
       POSTGRES_DB: task_management
       POSTGRES_USER: admin
       POSTGRES_PASSWORD: password123
     ports:
       - "5432:5432"
+
+  # MongoDB
+  mongodb:
+    image: mongo:7.0
+    container_name: cats_db
+    restart: always
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: admin
+      MONGO_INITDB_ROOT_PASSWORD: password123
+      MONGO_INITDB_DATABASE: cats_database
+    ports:
+      - "27017:27017"
